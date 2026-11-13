@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeanLight Solar Pune</title>
+<meta name="description" content="Rooftop solar for Pune homes, housing societies and businesses. Sized to your MSEDCL bill, the ₹78,000 subsidy and net meter handled, and a team that stays after handover.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Dawn over a Pune terrace: night indigo lit by one gold light source, photovoltaic blue for the hardware */
+  --night:#090D20;
+  --deep:#111A3C;
+  --gold:#FFB020;
+  --pv:#5AA7FF;
+  --paper:#E9ECF3;
+  --mute:#8894B0;
+  --line:rgba(233,236,243,.14);
+  --display:"Bricolage Grotesque","Trebuchet MS",sans-serif;
+  --body:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --gut:clamp(18px,4.5vw,84px);
+  --max:1360px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--night);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,canvas,svg{display:block;max-width:100%}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:2px}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.02;letter-spacing:-.03em;text-wrap:balance}
+h1{font-size:clamp(2.6rem,6.4vw,6rem);font-weight:500}
+h2{font-size:clamp(2rem,4.6vw,3.9rem)}
+h3{font-size:clamp(1.15rem,1.7vw,1.5rem);letter-spacing:-.02em;line-height:1.14}
+h4{font-size:1.02rem;letter-spacing:-.01em}
+p{max-width:60ch}
+.lede{font-size:clamp(1.02rem,1.35vw,1.22rem);color:#C3CBDC;max-width:52ch}
+.num{font-family:var(--display);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.04em}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gut)}
+section{position:relative}
+.pad{padding-block:clamp(72px,10vw,150px)}
+.rule{height:1px;background:var(--line);border:0}
+
+.btn{display:inline-flex;align-items:center;gap:.65em;padding:.95em 1.5em;border:0;border-radius:4px;background:var(--gold);color:#1A1203;font-family:var(--body);font-weight:600;font-size:.97rem;text-decoration:none;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.btn:hover,.btn:focus-visible{background:#FFC759;transform:translateY(-2px)}
+.btn svg{width:.9em;height:.9em;fill:none;stroke:currentColor;stroke-width:2.4}
+.btn.line{background:transparent;color:var(--paper);box-shadow:inset 0 0 0 1px rgba(233,236,243,.4)}
+.btn.line:hover,.btn.line:focus-visible{background:rgba(233,236,243,.1);box-shadow:inset 0 0 0 1px var(--paper)}
+.btn.dark{background:var(--night);color:var(--paper)}
+.btn.dark:hover{background:var(--deep)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:16px var(--gut);transition:background .35s,backdrop-filter .35s,border-color .35s;border-bottom:1px solid transparent}
+.nav.stuck{background:rgba(9,13,32,.82);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.brand{display:flex;align-items:center;gap:.55em;font-family:var(--display);font-weight:600;font-size:1.18rem;letter-spacing:-.04em;text-decoration:none}
+.brand svg{width:26px;height:26px;flex:none}
+.nav nav{display:flex;gap:clamp(16px,2.1vw,32px);font-size:.93rem;color:#BAC3D6}
+.nav nav a{text-decoration:none;transition:color .2s}
+.nav nav a:hover{color:var(--paper)}
+.nav .btn{padding:.7em 1.15em;font-size:.88rem}
+@media(max-width:940px){.nav nav{display:none}.nav .btn{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+#stage{position:fixed;inset:0;z-index:0;background:linear-gradient(180deg,#0B1130 0%,#1D2550 45%,#4A3A5E 72%,#8A5A48 100%)}
+#stage canvas{width:100%!important;height:100%!important}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--max);margin-inline:auto;padding:0 var(--gut) clamp(96px,13vh,150px)}
+.kicker{display:inline-flex;align-items:center;gap:.6em;font-size:.82rem;letter-spacing:.01em;color:#CBD3E4;background:rgba(9,13,32,.5);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:3px;padding:.5em .85em;margin-bottom:22px}
+.kicker b{color:var(--gold);font-weight:600}
+.hero h1{max-width:15ch;text-shadow:0 2px 40px rgba(9,13,32,.55)}
+.hero .lede{margin-top:22px;text-shadow:0 1px 20px rgba(9,13,32,.7)}
+.hero-foot{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,56px);margin-top:44px;padding-top:26px;border-top:1px solid var(--line);align-items:flex-end}
+.hero-foot div span{display:block;font-size:.8rem;color:var(--mute);margin-top:6px;max-width:22ch}
+.hero-foot .num{font-size:clamp(1.6rem,2.6vw,2.3rem);line-height:1}
+.scrollcue{position:absolute;right:var(--gut);bottom:clamp(96px,13vh,150px);z-index:2;display:flex;align-items:center;gap:10px;font-size:.78rem;color:var(--mute);writing-mode:vertical-rl}
+.scrollcue i{width:1px;height:54px;background:linear-gradient(var(--gold),transparent);display:block}
+@media(max-width:940px){.scrollcue{display:none}.hero-in{padding-top:96px}.hero-foot{margin-top:30px;gap:18px}}
+
+/* ---------- journey ---------- */
+.journey{position:relative;z-index:1}
+.beat{min-height:100svh;display:flex;align-items:center;padding:12vh var(--gut)}
+.beat-in{max-width:var(--max);margin-inline:auto;width:100%}
+.card{max-width:min(460px,100%);background:rgba(9,13,32,.72);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:6px;padding:clamp(22px,2.6vw,34px);opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.beat.live .card{opacity:1;transform:none}
+.beat:nth-child(even) .beat-in{display:flex;justify-content:flex-end}
+.card .step{font-family:var(--display);font-size:.8rem;letter-spacing:.02em;color:var(--gold);margin-bottom:12px}
+.card p{margin-top:12px;color:#C3CBDC;font-size:.98rem}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.87rem}
+.card dt{color:var(--mute)}
+.card dd{font-family:var(--display);font-weight:600}
+.solid{position:relative;z-index:2;background:var(--night)}
+
+/* ---------- calculator ---------- */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:clamp(30px,5vw,80px);margin-top:46px;align-items:start}
+.seg{border:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.seg legend,.lbl{font-size:.86rem;color:var(--mute);margin-bottom:12px;padding:0}
+.seg input{position:absolute;opacity:0;width:0}
+.seg span{display:block;padding:.6em 1.05em;border-radius:3px;box-shadow:inset 0 0 0 1px var(--line);font-size:.92rem;cursor:pointer;transition:background .2s,box-shadow .2s,color .2s}
+.seg input:checked+span{background:var(--paper);color:var(--night);box-shadow:none}
+.seg input:focus-visible+span{outline:2px solid var(--gold);outline-offset:3px}
+.field{margin-top:34px}
+.bigval{display:block;font-family:var(--display);font-weight:500;font-size:clamp(3rem,6.6vw,5rem);line-height:.95;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.bigval small{font-family:var(--body);font-size:.2em;font-weight:500;color:var(--mute);letter-spacing:0;margin-left:.6em}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:40px;background:transparent;cursor:pointer;margin-top:4px}
+input[type=range]::-webkit-slider-runnable-track{height:2px;background:linear-gradient(90deg,var(--gold) var(--fill,30%),rgba(233,236,243,.2) var(--fill,30%))}
+input[type=range]::-moz-range-track{height:2px;background:linear-gradient(90deg,var(--gold) var(--fill,30%),rgba(233,236,243,.2) var(--fill,30%))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 6px rgba(255,176,32,.18)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:50%;background:var(--gold)}
+.compare{margin-top:36px;display:grid;gap:14px}
+.cmp{font-size:.9rem}
+.cmp div{height:30px;margin-top:7px;border-radius:2px;background:rgba(233,236,243,.14);position:relative;overflow:hidden}
+.cmp i{position:absolute;inset:0 auto 0 0;width:var(--w,100%);background:rgba(233,236,243,.3);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.cmp.sol i{background:linear-gradient(90deg,var(--gold),#FFD37A)}
+.cmp>span{display:flex;justify-content:space-between;gap:12px}
+.cmp b{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--paper);letter-spacing:-.02em}
+.cmp.sol b{color:var(--gold)}
+.panelbox{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:linear-gradient(180deg,rgba(90,167,255,.07),rgba(9,13,32,0))}
+.array{padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;min-height:168px;align-content:start}
+.array u{display:block;aspect-ratio:1/1.62;border-radius:2px;text-decoration:none;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.16) 0 1px,transparent 1px 33.3%),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.1) 0 1px,transparent 1px 25%),
+  linear-gradient(145deg,#2F5FB8,#16307A 60%,#0F2358);
+  box-shadow:inset 0 0 0 1px rgba(154,196,255,.45);animation:drop .5s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes drop{from{opacity:0;transform:translateY(-10px) scale(.86)}}
+.arrayfoot{padding:14px 20px;border-top:1px solid var(--line);font-size:.84rem;color:var(--mute);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.payoff{margin-top:26px}
+.payoff .num{display:block;font-size:clamp(2.6rem,5.6vw,4.2rem);line-height:.95;color:var(--gold)}
+.payoff span{font-size:.92rem;color:var(--mute)}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 26px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.kpis dt{font-size:.82rem;color:var(--mute)}
+.kpis dd{font-family:var(--display);font-weight:600;font-size:1.7rem;letter-spacing:-.03em;line-height:1.1;margin-top:2px;font-variant-numeric:tabular-nums}
+.fine{font-size:.8rem;color:var(--mute);margin-top:22px;max-width:none}
+@media(max-width:940px){.calc{grid-template-columns:1fr}}
+
+/* ---------- segments ---------- */
+.segs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:48px;background:var(--line);border-block:1px solid var(--line)}
+.segs article{background:var(--night);padding:clamp(22px,2.6vw,34px) clamp(18px,2vw,28px);display:flex;flex-direction:column;gap:14px;transition:background .3s}
+.segs article:hover{background:var(--deep)}
+.segs .ico{width:46px;height:46px;stroke:var(--gold);fill:none;stroke-width:1.4}
+.segs p{font-size:.95rem;color:#C3CBDC;flex:1}
+.segs ul{list-style:none;padding:0;display:grid;gap:7px;font-size:.88rem;color:var(--mute)}
+.segs li{display:grid;grid-template-columns:14px 1fr;gap:9px}
+.segs li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--pv);margin-top:.55em}
+.segs a{font-size:.9rem;font-weight:600;text-decoration:none;color:var(--gold);display:inline-flex;align-items:center;gap:.45em}
+.segs a:hover{text-decoration:underline}
+@media(max-width:940px){.segs{grid-template-columns:1fr}}
+
+/* ---------- subsidy ---------- */
+.subsidy{background:var(--deep)}
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,26px);margin-top:46px}
+.tier{border:1px solid var(--line);border-radius:6px;padding:clamp(20px,2.4vw,30px);position:relative;overflow:hidden;background:rgba(9,13,32,.4)}
+.tier.best{border-color:rgba(255,176,32,.55);background:rgba(255,176,32,.07)}
+.tier .cap{font-size:.84rem;color:var(--mute)}
+.tier .num{display:block;font-size:clamp(2rem,3.6vw,2.9rem);margin-top:10px;line-height:1}
+.tier.best .num{color:var(--gold)}
+.tier p{font-size:.88rem;color:#C3CBDC;margin-top:12px}
+.flag{position:absolute;top:0;right:0;background:var(--gold);color:#1A1203;font-size:.72rem;font-weight:600;padding:.3em .7em;border-radius:0 0 0 4px}
+.paper{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:40px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.paper div{background:var(--deep);padding:20px}
+.paper .n{font-family:var(--display);font-size:.8rem;color:var(--gold);margin-bottom:8px}
+.paper p{font-size:.86rem;color:#C3CBDC;margin-top:6px}
+@media(max-width:940px){.tiers,.paper{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.tiers,.paper{grid-template-columns:1fr}}
+
+/* ---------- steps ---------- */
+.steps{counter-reset:s;margin-top:48px;border-top:1px solid var(--line)}
+.steps>div{display:grid;grid-template-columns:4.5rem minmax(0,14rem) minmax(0,1fr);gap:clamp(14px,3vw,44px);padding:clamp(22px,2.6vw,32px) 0;border-bottom:1px solid var(--line);align-items:start}
+.steps .mark{font-family:var(--display);font-size:1.5rem;color:var(--mute);font-variant-numeric:tabular-nums}
+.steps p{font-size:.95rem;color:#C3CBDC}
+.steps .who{font-size:.84rem;color:var(--gold)}
+@media(max-width:760px){.steps>div{grid-template-columns:2.6rem 1fr}.steps>div>p{grid-column:2}}
+
+/* ---------- care ---------- */
+.care{background:var(--deep)}
+.care-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center;margin-top:46px}
+.scan{position:relative;aspect-ratio:10/13;max-width:430px;border:1px solid var(--line);border-radius:4px;overflow:hidden;cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none;background:#05060F}
+.scan svg{position:absolute;inset:0;width:100%;height:100%}
+.scan .el{clip-path:inset(0 calc(100% - var(--x,46%)) 0 0)}
+.scan .sep{position:absolute;top:0;bottom:0;left:var(--x,46%);width:1px;background:var(--gold);box-shadow:0 0 18px 3px rgba(255,176,32,.6)}
+.scan .grip{position:absolute;top:50%;left:var(--x,46%);width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;background:var(--gold);display:grid;place-content:center;color:#1A1203;font-size:.8rem;font-weight:700}
+.scan .tg{position:absolute;bottom:10px;font-size:.72rem;letter-spacing:.02em;background:rgba(9,13,32,.8);padding:.3em .6em;border-radius:2px}
+.scan .tg.l{left:10px}.scan .tg.r{right:10px}
+.promise{list-style:none;padding:0;display:grid}
+.promise li{padding:20px 0;border-top:1px solid var(--line)}
+.promise li:last-child{border-bottom:1px solid var(--line)}
+.promise p{font-size:.93rem;color:#C3CBDC;margin-top:6px}
+.cap{font-size:.8rem;color:var(--mute);margin-top:12px}
+@media(max-width:940px){.care-grid{grid-template-columns:1fr}}
+
+/* ---------- faq ---------- */
+.faq{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(28px,6vw,90px);align-items:start}
+details{border-top:1px solid var(--line)}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;gap:18px;justify-content:space-between;align-items:center;padding:20px 0;font-family:var(--display);font-weight:600;font-size:clamp(1rem,1.5vw,1.2rem);letter-spacing:-.02em}
+summary::-webkit-details-marker{display:none}
+summary i{flex:none;width:18px;height:18px;position:relative}
+summary i::before,summary i::after{content:"";position:absolute;background:var(--gold);transition:transform .3s}
+summary i::before{inset:8px 0 auto 0;height:2px}
+summary i::after{inset:0 8px auto 8px;width:2px;height:18px;margin-left:-1px}
+details[open] summary i::after{transform:scaleY(0)}
+details p{padding-bottom:22px;color:#C3CBDC;font-size:.95rem}
+@media(max-width:940px){.faq{grid-template-columns:1fr}}
+
+/* ---------- form ---------- */
+.book{background:linear-gradient(180deg,var(--night),#13193A)}
+.book-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:clamp(28px,6vw,90px);align-items:start}
+.sheet{background:rgba(9,13,32,.6);border:1px solid var(--line);border-radius:8px;padding:clamp(22px,3vw,36px)}
+.prog{display:flex;gap:6px;margin-bottom:24px}
+.prog i{flex:1;height:3px;border-radius:2px;background:rgba(233,236,243,.18);overflow:hidden}
+.prog i.on{background:var(--gold)}
+.prog+.stepno{font-size:.82rem;color:var(--mute);margin-bottom:18px}
+fieldset{border:0;padding:0;display:none}
+fieldset.cur{display:grid;gap:18px;animation:in .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0;transform:translateX(14px)}}
+fieldset legend{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:-.02em;padding:0;margin-bottom:2px}
+.inp{width:100%;padding:.8em .9em;border:1px solid var(--line);border-radius:4px;background:rgba(233,236,243,.05);font-size:1rem}
+.inp:focus{border-color:var(--gold);outline:none}
+label.fl{display:block;font-size:.85rem;color:var(--mute);margin-bottom:7px}
+.oops{color:#FF8D6B;font-size:.88rem;min-height:1.3em}
+.fnav{display:flex;justify-content:space-between;gap:12px;margin-top:8px}
+.sent{display:none}
+.sent.show{display:block}
+.sent dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:18px 0;font-size:.9rem;border-top:1px solid var(--line);padding-top:16px}
+.sent dt{color:var(--mute)}
+@media(max-width:940px){.book-grid{grid-template-columns:1fr}}
+
+/* ---------- per-section 3D views ---------- */
+#views{position:fixed;inset:0;width:100%;height:100%;z-index:50;pointer-events:none}
+.view{position:relative;border-radius:6px;background:radial-gradient(110% 85% at 50% 100%,rgba(90,167,255,.13),rgba(9,13,32,0) 70%)}
+.v-roof{height:270px;border-radius:0}
+.v-seg{height:200px;margin:-8px 0 2px}
+.v-coin{height:150px;margin:-6px 0 6px}
+.v-module{height:clamp(280px,34vw,420px)}
+.v-clean{height:240px;margin-bottom:14px}
+.v-mon,.v-visit{height:270px;margin-top:34px}
+.proc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,64px);align-items:center}
+.array{padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;align-content:start}
+@media(max-width:940px){.proc-head{grid-template-columns:1fr}.v-seg{height:180px}}
+footer{background:var(--night);border-top:1px solid var(--line);padding:52px var(--gut) 100px}
+.foot{max-width:var(--max);margin-inline:auto;display:flex;flex-wrap:wrap;gap:34px;justify-content:space-between}
+footer p{color:var(--mute);font-size:.88rem;max-width:40ch;margin-top:12px}
+footer ul{list-style:none;padding:0;display:grid;gap:9px;font-size:.9rem}
+footer a{text-decoration:none;color:#BAC3D6}
+footer a:hover{color:var(--paper)}
+
+.mbar{display:none}
+@media(max-width:940px){
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 12px;background:rgba(9,13,32,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+  .mbar .btn{justify-content:center;padding:.85em .5em;font-size:.85rem}
+  .beat{min-height:92svh}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .card{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="stage" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="13" r="6" fill="#FFB020"/><path d="M16 1v3M16 22v3M28 13h3M1 13h3M24.5 4.5l2 2M5.5 21.5l2-2M24.5 21.5l2-2M5.5 4.5l2 2" stroke="#FFB020" stroke-width="1.6" stroke-linecap="round"/><path d="M3 29h26" stroke="#5AA7FF" stroke-width="2" stroke-linecap="round"/></svg>
+    LeanLight
+  </a>
+  <nav>
+    <a href="#calculator">Savings</a>
+    <a href="#segments">Who we serve</a>
+    <a href="#subsidy">Subsidy</a>
+    <a href="#process">Process</a>
+    <a href="#care">Care</a>
+    <a href="#faqs">FAQs</a>
+  </nav>
+  <a class="btn" href="#book">Book a free survey</a>
+</header>
+
+<main id="top">
+
+<section class="hero" id="hero">
+  <div class="hero-in">
+    <span class="kicker">Pune rooftops · <b>₹78,000 subsidy handled for you</b></span>
+    <h1>Your roof can pay your electricity bill.</h1>
+    <p class="lede">We size the system to your MSEDCL bill, file the subsidy and net meter, and stay with you long after the panels go up.</p>
+    <div class="cta-row">
+      <a class="btn" href="#calculator">See what you would save <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn line" href="#book">Book a free survey</a>
+    </div>
+    <div class="hero-foot">
+      <div><span class="num" id="hf1">1,500</span><span>units a year from every kW, on a Pune roof</span></div>
+      <div><span class="num">~100 sq ft</span><span>of shadow-free roof per kW</span></div>
+      <div><span class="num">10 years</span><span>of Xiom Energy engineering behind us</span></div>
+    </div>
+  </div>
+  <div class="scrollcue" aria-hidden="true">Scroll: sunrise to your meter <i></i></div>
+</section>
+
+<div class="journey" id="journey">
+  <section class="beat" data-beat="0">
+    <div class="beat-in"><div class="card">
+      <div class="step">01 · Sunrise</div>
+      <h3>Pune gets sun almost every day of the year.</h3>
+      <p>Pune's position and clear skies put roughly 1,400 to 1,600 units a year through every kilowatt you install, monsoon months already counted.</p>
+      <dl><dt>Yearly generation</dt><dd>1,400–1,600 units / kW</dd><dt>Roof needed</dt><dd>~100 sq ft / kW</dd></dl>
+    </div></div>
+  </section>
+  <section class="beat" data-beat="1">
+    <div class="beat-in"><div class="card">
+      <div class="step">02 · The array</div>
+      <h3>Panels sized to the bill, not to your roof's spare space.</h3>
+      <p>We size from your actual MSEDCL consumption, so you are not paying for generation you cannot use. Every module is EL-tested before it reaches your roof.</p>
+      <dl><dt>Typical home</dt><dd>2–5 kW</dd><dt>Module size</dt><dd>550 W</dd></dl>
+    </div></div>
+  </section>
+  <section class="beat" data-beat="2">
+    <div class="beat-in"><div class="card">
+      <div class="step">03 · The inverter</div>
+      <h3>DC from the roof becomes the AC your home runs on.</h3>
+      <p>The inverter sits on a shaded wall, converts the panels' output and reports generation to an app, so you can see what your roof produced on any day.</p>
+      <dl><dt>Mounted</dt><dd>Shaded exterior wall</dd><dt>Monitoring</dt><dd>Per-day generation</dd></dl>
+    </div></div>
+  </section>
+  <section class="beat" data-beat="3">
+    <div class="beat-in"><div class="card">
+      <div class="step">04 · The net meter</div>
+      <h3>Units you don't use run back into the grid.</h3>
+      <p>MSEDCL's net meter counts both directions. Your solar units come off the most expensive slab of your bill first, which is where the saving actually comes from.</p>
+      <dl><dt>Top slab</dt><dd>₹16.64 a unit</dd><dt>First slab</dt><dd>₹4.71 a unit</dd></dl>
+    </div></div>
+  </section>
+  <section class="beat" data-beat="4">
+    <div class="beat-in"><div class="card">
+      <div class="step">05 · After dark</div>
+      <h3>At night you draw on the units you banked.</h3>
+      <p>Exported units are credited against what you import, so the system keeps earning after sunset. No batteries needed for a standard grid-tied home.</p>
+      <dl><dt>Billing</dt><dd>Import netted against export</dd><dt>Batteries</dt><dd>Not required</dd></dl>
+    </div></div>
+  </section>
+</div>
+
+<div class="solid">
+
+<section class="pad wrap" id="calculator">
+  <h2>What would your bill become?</h2>
+  <p class="lede" style="margin-top:18px">Set the slider to your monthly bill. The array fills with the panels your roof would carry.</p>
+  <div class="calc">
+    <div>
+      <fieldset class="seg">
+        <legend>Property</legend>
+        <label><input type="radio" name="pt" value="home" checked><span>House or row house</span></label>
+        <label><input type="radio" name="pt" value="society"><span>Housing society</span></label>
+        <label><input type="radio" name="pt" value="business"><span>Business</span></label>
+      </fieldset>
+      <div class="field">
+        <label class="lbl" for="bill">Monthly electricity bill</label>
+        <output class="bigval" id="billout" for="bill">₹4,500<small>per month</small></output>
+        <input type="range" id="bill" min="1000" max="20000" step="250" value="4500">
+      </div>
+      <div class="compare" aria-hidden="true">
+        <div class="cmp"><span class="lbl" style="margin:0">Bill today <b id="barAv"></b></span><div><i id="barA"></i></div></div>
+        <div class="cmp sol"><span class="lbl" style="margin:0">Bill with solar <b id="barBv"></b></span><div><i id="barB"></i></div></div>
+      </div>
+    </div>
+    <div aria-live="polite">
+      <div class="panelbox">
+        <div class="view v-roof array" id="array" data-view="roof" aria-hidden="true"></div>
+        <div class="arrayfoot"><span id="panelcount"></span><span id="roofneed"></span></div>
+      </div>
+      <div class="payoff">
+        <span>Estimated saving at today's tariff</span>
+        <span class="num" id="rYear">₹0</span>
+        <span>a year</span>
+      </div>
+      <dl class="kpis">
+        <div><dt>System size</dt><dd id="rKw">0 kW</dd></div>
+        <div><dt>Subsidy we claim for you</dt><dd id="rSub">₹0</dd></div>
+        <div><dt>Bill after solar</dt><dd id="rAfter">₹0</dd></div>
+        <div><dt>Saved over 25 years</dt><dd id="r25">₹0</dd></div>
+      </dl>
+      <div class="cta-row"><a class="btn" href="#book">Get my exact quote <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      <p class="fine">Estimated from MSEDCL slab rates and about 1,500 units a year per kW in Pune. Your written quote after the free site survey carries the exact price, payback and warranties.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="pad wrap" id="segments">
+  <h2>One roof, a whole society, or a factory shed.</h2>
+  <p class="lede" style="margin-top:18px">The sizing, the subsidy and the approvals differ for each. So does the team that handles them.</p>
+  <div class="segs">
+    <article>
+      <div class="view v-seg" data-view="home" aria-hidden="true"></div>
+      <h3>Homes</h3>
+      <p>Independent houses, bungalows and row houses on an MSEDCL connection. Most need 2 to 5 kW and qualify for the full central subsidy.</p>
+      <ul><li>Sized from your bill, not your roof area</li><li>₹78,000 subsidy filed and tracked</li><li>Net meter application handled</li></ul>
+      <a href="#calculator">Size a home system →</a>
+    </article>
+    <article>
+      <div class="view v-seg" data-view="society" aria-hidden="true"></div>
+      <h3>Housing societies</h3>
+      <p>Lifts, water pumps, corridor lighting and the clubhouse run all day on the common-area meter. That load is the cheapest to offset.</p>
+      <ul><li>₹18,000 per kW for common-area systems</li><li>Numbers presented to your committee</li><li>Society resolution and approvals supported</li></ul>
+      <a href="#calculator">Size a society system →</a>
+    </article>
+    <article>
+      <div class="view v-seg" data-view="business" aria-hidden="true"></div>
+      <h3>Commercial</h3>
+      <p>Shops, offices, schools, clinics and factories draw most of their power while the sun is up, so solar removes units from the costliest slab first.</p>
+      <ul><li>Commercial tariffs cut from the top slab</li><li>Accelerated depreciation benefit explained</li><li>Shed, terrace and car-park structures</li></ul>
+      <a href="#calculator">Size a commercial system →</a>
+    </article>
+  </div>
+</section>
+
+<section class="pad subsidy" id="subsidy">
+  <div class="wrap">
+    <h2>The subsidy is real money. The paperwork is the hard part.</h2>
+    <p class="lede" style="margin-top:18px">PM Surya Ghar pays a fixed amount straight into your bank account once the system is commissioned. We file every form in that chain.</p>
+    <div class="tiers">
+      <div class="tier"><div class="view v-coin" data-view="coins" data-n="4" aria-hidden="true"></div><span class="cap">1 kW system</span><span class="num">₹30,000</span><p>Suits a small flat or a low-consumption home.</p></div>
+      <div class="tier"><div class="view v-coin" data-view="coins" data-n="8" aria-hidden="true"></div><span class="cap">2 kW system</span><span class="num">₹60,000</span><p>Covers most homes billing under ₹3,000 a month.</p></div>
+      <div class="tier best"><span class="flag">Most homes</span><div class="view v-coin" data-view="coins" data-n="10" aria-hidden="true"></div><span class="cap">3 kW and above</span><span class="num">₹78,000</span><p>The maximum residential subsidy, and where most Pune homes land.</p></div>
+    </div>
+    <p style="margin-top:28px;color:#C3CBDC">Housing societies receive ₹18,000 per kW on common-area systems. Commercial connections are not covered by this scheme.</p>
+    <div class="paper">
+      <div><div class="n">01</div><h4>Portal registration</h4><p>Your connection registered on the national portal against your consumer number.</p></div>
+      <div><div class="n">02</div><h4>MSEDCL feasibility</h4><p>Feasibility approval and the net-meter application, filed and followed up.</p></div>
+      <div><div class="n">03</div><h4>Inspection</h4><p>We are on site when MSEDCL inspects and commissions the system.</p></div>
+      <div><div class="n">04</div><h4>Claim and credit</h4><p>The claim submitted and tracked until the money is in your account.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad wrap" id="process">
+  <div class="proc-head">
+    <div>
+      <h2>What actually happens, and who does it.</h2>
+      <p class="lede" style="margin-top:18px">Six steps from this page to a live net meter. Alongside, the part that goes on your roof, taken apart layer by layer as you scroll.</p>
+      <p class="cap">Tempered glass, encapsulant, the solar cells, a second encapsulant layer, the backsheet and the junction box, held in an aluminium frame.</p>
+    </div>
+    <div class="view v-module" data-view="module" aria-hidden="true"></div>
+  </div>
+  <div class="steps">
+    <div><span class="mark">01</span><div><h3>Savings estimate</h3><span class="who">You, two minutes</span></div><p>The calculator gives you a system size, subsidy and yearly saving before you speak to anyone. No form first.</p></div>
+    <div><span class="mark">02</span><div><h3>Free site survey</h3><span class="who">LeanLight engineer</span></div><p>We measure the shadow-free area, check the roof structure and your meter connection, and look at a recent bill.</p></div>
+    <div><span class="mark">03</span><div><h3>Design and written quote</h3><span class="who">LeanLight design team</span></div><p>A panel layout for your roof and one price in writing, with every warranty listed. It matches what the survey found.</p></div>
+    <div><span class="mark">04</span><div><h3>Installation</h3><span class="who">LeanLight install crew</span></div><p>Our own crew mounts the structure, modules and inverter. Typically one to three days for a home.</p></div>
+    <div><span class="mark">05</span><div><h3>Net meter and subsidy</h3><span class="who">LeanLight, with MSEDCL</span></div><p>We file the net-meter application and the subsidy claim, and follow both until the meter is live and the money has landed.</p></div>
+    <div><span class="mark">06</span><div><h3>Care, for as long as you own it</h3><span class="who">Your relationship manager</span></div><p>Scheduled cleaning, generation checks and any warranty claim raised by us, not by you.</p></div>
+  </div>
+</section>
+
+<section class="pad care" id="care">
+  <div class="wrap">
+    <h2>Most installers leave at handover. That is where we start.</h2>
+    <div class="care-grid">
+      <div>
+        <div class="scan" id="scan" role="slider" tabindex="0" aria-label="Compare a panel in daylight with its electroluminescence scan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="46">
+          <svg id="scanDay" viewBox="0 0 100 130" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <svg id="scanEl" class="el" viewBox="0 0 100 130" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <span class="tg l">EL scan</span><span class="tg r">Daylight</span>
+          <div class="sep"></div><div class="grip" aria-hidden="true">↔</div>
+        </div>
+        <p class="cap">Illustration. Drag across the module. In daylight both halves look identical. The scan shows a microcrack through two cells, and that module never reaches your roof.</p>
+      </div>
+      <div>
+      <div class="view v-clean" data-view="clean" aria-hidden="true"></div>
+      <ul class="promise">
+        <li><h3>Every module EL-tested</h3><p>Electroluminescence imaging finds cracks the eye cannot see. Cracked cells lose output quietly for years.</p></li>
+        <li><h3>One relationship manager</h3><p>The same person from your survey onwards. A name and a number, and they know your roof.</p></li>
+        <li><h3>Cleaning on a schedule</h3><p>Pune dust reduces generation. We clean on a set calendar and check the system each visit.</p></li>
+        <li><h3>Warranty claims filed by us</h3><p>If a module or inverter fails, we raise the claim with the manufacturer and arrange the replacement.</p></li>
+      </ul>
+      </div>
+    </div>
+    <p style="margin-top:50px;padding-top:26px;border-top:1px solid var(--line);font-size:1.05rem">LeanLight Solar is the home and commercial rooftop brand of <b>Xiom Energy</b>, Pune.</p>
+  </div>
+</section>
+
+<section class="pad wrap" id="faqs">
+  <div class="faq">
+    <div>
+      <h2>Before you sign.</h2>
+      <div class="cta-row"><a class="btn" href="#book">Book a free survey</a></div>
+      <div class="view v-mon" data-view="monsoon" aria-hidden="true"></div>
+      <p class="cap">Output dips when a cloud crosses the sun and comes straight back after. The yearly figures on this page already include the monsoon.</p>
+    </div>
+    <div>
+      <details open><summary>When does the subsidy actually reach me?<i></i></summary><p>After installation, MSEDCL inspects and commissions the net meter. We then submit your claim on the national portal and it is credited directly to your bank account. We track it until it lands, and you are not chasing anyone.</p></details>
+      <details><summary>What happens during the monsoon?<i></i></summary><p>Generation drops on heavily overcast days but does not stop. The figures on this page use a full-year Pune number that already includes the monsoon, so the saving shown is annual, not a best-case month.</p></details>
+      <details><summary>How much maintenance does it need?<i></i></summary><p>Mainly cleaning. There are no moving parts in the array. Dust and bird droppings cut output, so we clean on a schedule and check generation each visit.</p></details>
+      <details><summary>Can I pay in EMIs?<i></i></summary><p>Yes. Banks offer solar loans for PM Surya Ghar systems, and for many homes the EMI is close to the bill they stop paying. We go through the options at your survey and help with the paperwork.</p></details>
+      <details><summary>Is my roof suitable?<i></i></summary><p>You need roughly 100 sq ft of shadow-free space per kW. RCC slabs and metal-sheet roofs both work. The survey checks shade through the day, structural strength and your meter connection before we quote.</p></details>
+      <details><summary>What warranties do I get?<i></i></summary><p>Modules carry a manufacturer performance warranty and the inverter carries its own. Your written quote lists each one with its term, and if anything fails we file the claim for you.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="pad book" id="book">
+  <div class="wrap book-grid">
+    <div>
+      <h2>Book your free site survey.</h2>
+      <p class="lede" style="margin-top:18px">Four short steps. An engineer visits, measures the roof and gives you one written price with the subsidy already worked in.</p>
+      <ul class="promise" style="margin-top:34px">
+        <li><h3>No cost, no obligation</h3><p>The survey and the written quote are free whether or not you proceed.</p></li>
+        <li><h3>We call within the working day</h3><p>Your request reaches the LeanLight sales team the moment you submit it.</p></li>
+      </ul>
+      <div class="view v-visit" data-view="visit" aria-hidden="true"></div>
+    </div>
+    <div class="sheet">
+      <form id="form" novalidate>
+        <div class="prog" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+        <p class="stepno" id="stepno">Step 1 of 4 · Your property</p>
+        <fieldset class="cur">
+          <legend>Your property and bill</legend>
+          <div><label class="fl" for="f-type">Property type</label>
+            <select class="inp" id="f-type"><option value="home">House or row house</option><option value="society">Housing society</option><option value="business">Business</option></select></div>
+          <div><label class="fl" for="f-bill">Monthly electricity bill (₹)</label><input class="inp" id="f-bill" type="number" inputmode="numeric" min="500" value="4500"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Your roof</legend>
+          <div><label class="fl" for="f-own">Do you own the property?</label><select class="inp" id="f-own"><option>Yes</option><option>No, I rent</option><option>I am on the society committee</option></select></div>
+          <div><label class="fl" for="f-roof">Roof type</label><select class="inp" id="f-roof"><option>RCC slab</option><option>Metal sheet</option><option>Not sure</option></select></div>
+        </fieldset>
+        <fieldset>
+          <legend>Where, and what you have so far</legend>
+          <div><label class="fl" for="f-pin">Pincode</label><input class="inp" id="f-pin" inputmode="numeric" maxlength="6" placeholder="411045" autocomplete="postal-code"></div>
+          <div><label class="fl" for="f-quote">Have you received another solar quote?</label><select class="inp" id="f-quote"><option>Not yet</option><option>Yes, one</option><option>Yes, more than one</option></select></div>
+        </fieldset>
+        <fieldset>
+          <legend>Who should we call?</legend>
+          <div><label class="fl" for="f-name">Name</label><input class="inp" id="f-name" autocomplete="name"></div>
+          <div><label class="fl" for="f-mob">Mobile number</label><input class="inp" id="f-mob" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="tel-national"></div>
+        </fieldset>
+        <p class="oops" id="oops" role="alert"></p>
+        <div class="fnav"><button type="button" class="btn line" id="back" hidden>Back</button><span></span><button type="submit" class="btn" id="next">Next</button></div>
+      </form>
+      <div class="sent" id="sent" tabindex="-1">
+        <h3>This is a design preview, so nothing was sent.</h3>
+        <p style="margin-top:10px;color:#C3CBDC">On the live site this reaches LeanLight's sales team within seconds, carrying:</p>
+        <dl id="sum"></dl>
+        <button type="button" class="btn line" id="again">Start again</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <a class="brand" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="13" r="6" fill="#FFB020"/><path d="M3 29h26" stroke="#5AA7FF" stroke-width="2" stroke-linecap="round"/></svg>LeanLight Solar</a>
+      <p>Rooftop solar for Pune homes, housing societies and businesses. A Xiom Energy brand.</p>
+    </div>
+    <ul>
+      <li><a href="#calculator">Savings calculator</a></li>
+      <li><a href="#segments">Who we serve</a></li>
+      <li><a href="#subsidy">Subsidy</a></li>
+      <li><a href="#process">Process</a></li>
+    </ul>
+    <ul>
+      <li><a href="#care">Care after handover</a></li>
+      <li><a href="#faqs">FAQs</a></li>
+      <li><a href="#book">Book a free survey</a></li>
+    </ul>
+    <p>Website concept by Digifinity. Contact details, real photographs and customer reviews to be added before launch.</p>
+  </div>
+</footer>
+
+<div class="mbar"><a class="btn line" href="#calculator">See my savings</a><a class="btn" href="#book">Book a survey</a></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+"use strict";
+var RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+var SMALL = matchMedia("(max-width: 940px)").matches;
+var $ = function(id){return document.getElementById(id)};
+var clamp = function(v,a,b){return Math.max(a,Math.min(b,v))};
+var inr = function(n){return "₹"+Math.round(n).toLocaleString("en-IN")};
+var lerp = function(a,b,k){return a+(b-a)*k};
+
+/* ============================================================
+   CALCULATOR — constants in one place, for LeanLight to confirm
+   ============================================================ */
+var CFG = {
+  unitsPerKwYear:1500, sqftPerKw:100, panelWatt:550,
+  duty:{home:.16,society:.16,business:.21},
+  fixed:{home:128,society:424,business:442},
+  slabs:{
+    home:[[100,4.71],[300,10.29],[500,14.55],[Infinity,16.64]],
+    society:[[100,4.71],[300,10.29],[500,14.55],[Infinity,16.64]],
+    business:[[200,12.88],[Infinity,15.74]]
+  },
+  range:{home:[1000,20000,250,4500],society:[10000,200000,2500,60000],business:[10000,300000,2500,90000]},
+  maxKw:{home:10,society:150,business:200}
+};
+function billFor(u,t){var e=0,prev=0,s=CFG.slabs[t];for(var i=0;i<s.length&&u>prev;i++){e+=(Math.min(u,s[i][0])-prev)*s[i][1];prev=s[i][0];}return (e+CFG.fixed[t])*(1+CFG.duty[t]);}
+function unitsFor(bill,t){var lo=0,hi=60000;for(var i=0;i<40;i++){var m=(lo+hi)/2; if(billFor(m,t)<bill) lo=m; else hi=m;}return lo;}
+function subsidyFor(kw,t){
+  if(t==="home") return Math.min(kw,2)*30000 + clamp(kw-2,0,1)*18000;
+  if(t==="society") return kw*18000;
+  return 0;
+}
+function estimate(bill,t){
+  var u=unitsFor(bill,t), perKw=CFG.unitsPerKwYear/12;
+  var kw=clamp(Math.round(u/perKw*2)/2,1,CFG.maxKw[t]);
+  var after=billFor(Math.max(0,u-kw*perKw),t), year=(bill-after)*12, tot=0;
+  for(var y=0;y<25;y++) tot+=year*Math.pow(.995,y);
+  return {kw:kw,after:after,year:year,sub:subsidyFor(kw,t),area:kw*CFG.sqftPerKw,panels:Math.ceil(kw*1000/CFG.panelWatt),total:tot};
+}
+window.__estimate = estimate;
+
+var billEl=$("bill"), arr=$("array"), ptype="home", shown=0;
+function tween(el,to,fmt){
+  var from=el.__v||0; el.__v=to;
+  if(RM||from===to){el.textContent=fmt(to);return;}
+  var t0=performance.now();
+  (function f(n){var k=clamp((n-t0)/550,0,1);k=1-Math.pow(1-k,3);el.textContent=fmt(from+(to-from)*k);if(k<1)requestAnimationFrame(f);})(t0);
+}
+function compact(v){return v>=1e7? "₹"+(v/1e7).toFixed(2)+" cr" : v>=1e5? "₹"+(v/1e5).toFixed(1)+" lakh" : inr(v);}
+function renderCalc(){
+  var bill=+billEl.value, r=estimate(bill,ptype);
+  billEl.style.setProperty("--fill",((bill-billEl.min)/(billEl.max-billEl.min)*100)+"%");
+  $("billout").innerHTML=inr(bill)+"<small>per month</small>";
+  tween($("rYear"),r.year,inr);
+  tween($("rKw"),r.kw,function(v){return (Math.round(v*2)/2)+" kW"});
+  tween($("rSub"),r.sub,function(v){return r.sub? inr(v):"Not applicable"});
+  tween($("rAfter"),r.after,function(v){return inr(v)+" / mo"});
+  tween($("r25"),r.total,compact);
+  $("barA").style.setProperty("--w","100%"); $("barAv").textContent=inr(bill)+" a month";
+  $("barB").style.setProperty("--w",clamp(r.after/bill*100,2,100)+"%"); $("barBv").textContent=inr(r.after)+" a month";
+  var show=Math.min(r.panels,24);
+  window.__roofN=show;
+  if(window.__setRoof){ window.__setRoof(show); }
+  else{
+    while(arr.children.length>show) arr.lastChild.remove();
+    for(var i=arr.children.length;i<show;i++){var u=document.createElement("u");u.style.animationDelay=((i-shown)*22)+"ms";arr.appendChild(u);}
+    shown=show;
+  }
+  $("panelcount").textContent=r.panels+" modules of "+CFG.panelWatt+" W"+(r.panels>24?" (first 24 shown)":"");
+  $("roofneed").textContent=Math.round(r.area).toLocaleString("en-IN")+" sq ft shadow-free";
+  $("f-bill").value=bill; $("f-type").value=ptype;
+}
+function setType(t){
+  ptype=t; var g=CFG.range[t];
+  billEl.min=g[0]; billEl.max=g[1]; billEl.step=g[2]; billEl.value=g[3];
+  if(!window.__setRoof){ arr.textContent=""; shown=0; } renderCalc();
+}
+billEl.addEventListener("input",renderCalc);
+document.querySelectorAll('input[name=pt]').forEach(function(r){r.addEventListener("change",function(){setType(r.value)})});
+setType("home");
+
+/* ============================================================
+   THE 3D SCENE — procedural, no external assets
+   Scroll drives one camera journey: sun, array, inverter, meter, dusk
+   ============================================================ */
+(function(){
+  var host=$("stage");
+  if(!window.THREE || RM){ host.setAttribute("data-fallback","1"); return; }
+  var renderer, scene, cam, sun, sunGlow, sky, meterNeedle, inverterLed, panels=[], W=0,H=0;
+  try{
+    renderer=new THREE.WebGLRenderer({antialias:!SMALL,alpha:false,powerPreference:"high-performance"});
+  }catch(e){ return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio||1, SMALL?1.25:1.6));
+  renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.05;
+  renderer.shadowMap.enabled=!SMALL;
+  if(!SMALL) renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  host.appendChild(renderer.domElement);
+
+  scene=new THREE.Scene();
+  scene.fog=new THREE.Fog(0x121a3c, 26, 110);
+  cam=new THREE.PerspectiveCamera(42,1,.1,400);
+
+  /* sky dome driven by two colours */
+  var skyMat=new THREE.ShaderMaterial({
+    side:THREE.BackSide, depthWrite:false,
+    uniforms:{uTop:{value:new THREE.Color(0x0b1130)},uBot:{value:new THREE.Color(0xd9763f)}},
+    vertexShader:"varying float h;void main(){h=normalize(position).y;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}",
+    fragmentShader:"uniform vec3 uTop;uniform vec3 uBot;varying float h;void main(){float k=smoothstep(-.18,.62,h);gl_FragColor=vec4(mix(uBot,uTop,k),1.);}"
+  });
+  sky=new THREE.Mesh(new THREE.SphereGeometry(200,24,16),skyMat); scene.add(sky);
+
+  /* lights */
+  var hemi=new THREE.HemisphereLight(0x9fc0ff,0x1a1428,.5); scene.add(hemi);
+  sun=new THREE.DirectionalLight(0xffd9a0,2.2);
+  sun.castShadow=!SMALL;
+  if(!SMALL){ sun.shadow.mapSize.set(1024,1024); var c=sun.shadow.camera; c.near=1;c.far=90;c.left=-22;c.right=22;c.top=22;c.bottom=-22; }
+  scene.add(sun);
+  var fill=new THREE.DirectionalLight(0x6f8fd0,.45); fill.position.set(-8,6,-10); scene.add(fill);
+
+  /* sun disc + glow sprite */
+  function radialTex(inner,outer){
+    var cv=document.createElement("canvas"); cv.width=cv.height=256;
+    var g=cv.getContext("2d"), rg=g.createRadialGradient(128,128,0,128,128,128);
+    rg.addColorStop(0,inner); rg.addColorStop(.28,outer); rg.addColorStop(1,"rgba(255,180,60,0)");
+    g.fillStyle=rg; g.fillRect(0,0,256,256);
+    return new THREE.CanvasTexture(cv);
+  }
+  sunGlow=new THREE.Sprite(new THREE.SpriteMaterial({map:radialTex("rgba(255,255,240,1)","rgba(255,186,80,.55)"),blending:THREE.AdditiveBlending,depthWrite:false,depthTest:true,fog:false}));
+  sunGlow.scale.set(26,26,1); scene.add(sunGlow);
+
+  /* ground */
+  var ground=new THREE.Mesh(new THREE.PlaneGeometry(400,400), new THREE.MeshStandardMaterial({color:0x1b2242,roughness:1,metalness:0}));
+  ground.rotation.x=-Math.PI/2; ground.position.y=-.02; ground.receiveShadow=!SMALL; scene.add(ground);
+
+  /* cell texture for modules */
+  function cellTex(){
+    var cv=document.createElement("canvas"); cv.width=256; cv.height=384; var g=cv.getContext("2d");
+    g.fillStyle="#12265f"; g.fillRect(0,0,256,384);
+    for(var r=0;r<6;r++) for(var c=0;c<4;c++){
+      var x=c*64+4,y=r*64+4;
+      var lg=g.createLinearGradient(x,y,x+56,y+56); lg.addColorStop(0,"#2d59ad"); lg.addColorStop(1,"#142d74");
+      g.fillStyle=lg; g.fillRect(x,y,56,56);
+      g.strokeStyle="rgba(190,215,255,.45)"; g.lineWidth=1.4;
+      g.beginPath(); g.moveTo(x+18,y); g.lineTo(x+18,y+56); g.moveTo(x+38,y); g.lineTo(x+38,y+56); g.stroke();
+    }
+    g.strokeStyle="#7fa6e8"; g.lineWidth=6; g.strokeRect(3,3,250,378);
+    var t=new THREE.CanvasTexture(cv); t.anisotropy=4; return t;
+  }
+  var panelMat=new THREE.MeshStandardMaterial({map:cellTex(),roughness:.22,metalness:.55,envMapIntensity:1});
+  var frameMat=new THREE.MeshStandardMaterial({color:0xb9c3d6,roughness:.5,metalness:.7});
+  var wallMat=new THREE.MeshStandardMaterial({color:0xaeb6c6,roughness:.95});
+  var trimMat=new THREE.MeshStandardMaterial({color:0x2a3356,roughness:.8});
+  var glassMat=new THREE.MeshStandardMaterial({color:0x0e1530,roughness:.15,metalness:.4,emissive:0x000000});
+  var windows=[];
+
+  function makeModule(){
+    var g=new THREE.Group();
+    var p=new THREE.Mesh(new THREE.BoxGeometry(1.7,.06,1.05),panelMat);
+    p.castShadow=!SMALL; p.receiveShadow=!SMALL; g.add(p);
+    var f=new THREE.Mesh(new THREE.BoxGeometry(1.76,.1,1.11),frameMat); f.position.y=-.04; g.add(f);
+    return g;
+  }
+  /* hero house */
+  var house=new THREE.Group(); scene.add(house);
+  var body=new THREE.Mesh(new THREE.BoxGeometry(11,5.2,8),wallMat);
+  body.position.y=2.6; body.castShadow=!SMALL; body.receiveShadow=!SMALL; house.add(body);
+  var slab=new THREE.Mesh(new THREE.BoxGeometry(11.6,.4,8.6),trimMat); slab.position.y=5.35; slab.castShadow=!SMALL; house.add(slab);
+  var para=new THREE.Mesh(new THREE.BoxGeometry(11.6,.7,.35),trimMat); para.position.set(0,5.9,4.2); house.add(para);
+  for(var wx=-3.6;wx<=3.6;wx+=3.6){
+    var win=new THREE.Mesh(new THREE.BoxGeometry(1.5,1.7,.12),glassMat.clone());
+    win.position.set(wx,2.9,4.06); house.add(win); windows.push(win);
+    var win2=new THREE.Mesh(new THREE.BoxGeometry(1.2,1.4,.12),glassMat.clone());
+    win2.position.set(wx,.9,4.06); house.add(win2); windows.push(win2);
+  }
+  /* tilted array on the terrace */
+  var array=new THREE.Group(); array.position.set(0,5.6,0); house.add(array);
+  for(var r=0;r<2;r++) for(var c=0;c<4;c++){
+    var m=makeModule();
+    m.position.set((c-1.5)*1.95, .55+r*.12, (r-0.5)*1.5);
+    m.rotation.x=-0.28; array.add(m); panels.push(m);
+    var leg=new THREE.Mesh(new THREE.BoxGeometry(.08,.6,.08),frameMat);
+    leg.position.set(m.position.x,.25,m.position.z+.4); array.add(leg);
+  }
+  /* inverter on the side wall */
+  var inv=new THREE.Group(); inv.position.set(5.55,2.6,1.4); house.add(inv);
+  var invBox=new THREE.Mesh(new THREE.BoxGeometry(.3,1.5,1),new THREE.MeshStandardMaterial({color:0xe3e6ec,roughness:.6}));
+  invBox.castShadow=!SMALL; inv.add(invBox);
+  var invFace=new THREE.Mesh(new THREE.BoxGeometry(.04,.5,.66),new THREE.MeshStandardMaterial({color:0x10172f,roughness:.35}));
+  invFace.position.set(.17,.3,0); inv.add(invFace);
+  inverterLed=new THREE.Mesh(new THREE.SphereGeometry(.05,10,8),new THREE.MeshBasicMaterial({color:0x4dff9b}));
+  inverterLed.position.set(.2,-.3,.3); inv.add(inverterLed);
+  var conduit=new THREE.Mesh(new THREE.CylinderGeometry(.06,.06,3.2,8),frameMat);
+  conduit.position.set(5.55,4.2,1.4); house.add(conduit);
+
+  /* net meter box next to the inverter */
+  var meter=new THREE.Group(); meter.position.set(5.55,2.6,-.6); house.add(meter);
+  var mBox=new THREE.Mesh(new THREE.BoxGeometry(.28,.95,.75),new THREE.MeshStandardMaterial({color:0x2b3350,roughness:.7}));
+  mBox.castShadow=!SMALL; meter.add(mBox);
+  var mFace=new THREE.Mesh(new THREE.CircleGeometry(.26,24),new THREE.MeshStandardMaterial({color:0xf3f1e6,roughness:.5}));
+  mFace.rotation.y=Math.PI/2; mFace.position.set(.145,.12,0); meter.add(mFace);
+  meterNeedle=new THREE.Mesh(new THREE.BoxGeometry(.012,.22,.03),new THREE.MeshBasicMaterial({color:0xc0392b}));
+  meterNeedle.position.set(.155,.12,0); meterNeedle.geometry.translate(0,.11,0); meter.add(meterNeedle);
+
+  /* neighbour blocks, some with arrays */
+  var rnd=(function(s){return function(){s=(s*16807)%2147483647;return s/2147483647}})(11);
+  for(var i=0;i<26;i++){
+    var bw=4+rnd()*6, bh=3+rnd()*9, bd=4+rnd()*5;
+    var ang=rnd()*Math.PI*2, dist=16+rnd()*48;
+    var bx=Math.cos(ang)*dist, bz=Math.sin(ang)*dist - 6;
+    if(Math.abs(bx)<11 && Math.abs(bz)<11) continue;
+    var b=new THREE.Mesh(new THREE.BoxGeometry(bw,bh,bd), new THREE.MeshStandardMaterial({color:new THREE.Color().setHSL(.62,.22,.18+rnd()*.14),roughness:.95}));
+    b.position.set(bx,bh/2,bz); b.castShadow=!SMALL; b.receiveShadow=!SMALL; scene.add(b);
+    if(rnd()>.45){
+      var n=Math.max(1,Math.floor(bw/2.2));
+      for(var k=0;k<n;k++){
+        var pm=new THREE.Mesh(new THREE.BoxGeometry(1.8,.07,1.1),panelMat);
+        pm.position.set(bx+(k-(n-1)/2)*2.1, bh+.25, bz); pm.rotation.x=-.3; scene.add(pm);
+      }
+    }
+    if(rnd()>.5){
+      var tank=new THREE.Mesh(new THREE.CylinderGeometry(.5,.5,.9,10),new THREE.MeshStandardMaterial({color:0x0f1630,roughness:.9}));
+      tank.position.set(bx+bw/2-.9,bh+.45,bz-bd/2+.9); scene.add(tank);
+    }
+  }
+
+  /* camera keyframes: one per journey beat */
+  var KEY=[
+    {p:[16,9.5,24],t:[0,5,0],fov:44,sunA:0.10,top:0x0b1130,bot:0xe0804a,hemi:.35},
+    {p:[9,13.5,13],t:[0,6.2,0],fov:40,sunA:0.26,top:0x12235e,bot:0xf0a659,hemi:.55},
+    {p:[4.5,12.5,8.5],t:[0,6,0],fov:34,sunA:0.46,top:0x1b3f9c,bot:0x8fc0ff,hemi:.85},
+    {p:[12,4.6,5.5],t:[5.6,2.9,.6],fov:34,sunA:0.60,top:0x1a3c96,bot:0x9cc6ff,hemi:.85},
+    {p:[10.5,3.6,-3.2],t:[5.6,2.8,-.4],fov:30,sunA:0.80,top:0x2a2a78,bot:0xff9a5c,hemi:.6},
+    {p:[18,7,-22],t:[0,4.4,0],fov:46,sunA:1.06,top:0x070b20,bot:0x241a44,hemi:.22}
+  ];
+  var cur={p:KEY[0].p.slice(),t:KEY[0].t.slice(),fov:KEY[0].fov,sunA:KEY[0].sunA,hemi:KEY[0].hemi};
+  var topC=new THREE.Color(KEY[0].top), botC=new THREE.Color(KEY[0].bot);
+  var progress=0, target=0;
+
+  function journeyProgress(){
+    var j=$("journey"), hero=$("hero");
+    var start=hero.offsetTop, end=j.offsetTop+j.offsetHeight-innerHeight;
+    return clamp((scrollY-start)/Math.max(1,end-start),0,1);
+  }
+  function sample(p){
+    var n=KEY.length-1, f=clamp(p,0,1)*n, i=Math.min(Math.floor(f),n-1), k=f-i;
+    k=k*k*(3-2*k);
+    var a=KEY[i],b=KEY[i+1];
+    return {
+      p:[lerp(a.p[0],b.p[0],k),lerp(a.p[1],b.p[1],k),lerp(a.p[2],b.p[2],k)],
+      t:[lerp(a.t[0],b.t[0],k),lerp(a.t[1],b.t[1],k),lerp(a.t[2],b.t[2],k)],
+      fov:lerp(a.fov,b.fov,k), sunA:lerp(a.sunA,b.sunA,k), hemi:lerp(a.hemi,b.hemi,k),
+      top:new THREE.Color(a.top).lerp(new THREE.Color(b.top),k),
+      bot:new THREE.Color(a.bot).lerp(new THREE.Color(b.bot),k)
+    };
+  }
+  function resize(){
+    W=innerWidth; H=innerHeight;
+    renderer.setSize(W,H,false);
+    cam.aspect=W/H; cam.updateProjectionMatrix();
+  }
+  var mx=0,my=0,pmx=0,pmy=0;
+  if(!SMALL) addEventListener("pointermove",function(e){ mx=(e.clientX/innerWidth-.5); my=(e.clientY/innerHeight-.5); },{passive:true});
+
+  var running=true, t=0;
+  function render(now){
+    requestAnimationFrame(render);
+    if(!running) return;
+    t=now/1000;
+    target=journeyProgress();
+    progress=lerp(progress,target,.075);
+    var s=sample(progress);
+    var ease=.1;
+    cur.p[0]=lerp(cur.p[0],s.p[0],ease); cur.p[1]=lerp(cur.p[1],s.p[1],ease); cur.p[2]=lerp(cur.p[2],s.p[2],ease);
+    cur.t[0]=lerp(cur.t[0],s.t[0],ease); cur.t[1]=lerp(cur.t[1],s.t[1],ease); cur.t[2]=lerp(cur.t[2],s.t[2],ease);
+    cur.fov=lerp(cur.fov,s.fov,ease);
+    pmx=lerp(pmx,mx,.05); pmy=lerp(pmy,my,.05);
+    var back = cam.aspect<1 ? 1.75 : 1;
+    cam.position.set(cur.t[0]+(cur.p[0]-cur.t[0])*back+pmx*2.2, cur.t[1]+(cur.p[1]-cur.t[1])*back-pmy*1.4, cur.t[2]+(cur.p[2]-cur.t[2])*back);
+    cam.lookAt(cur.t[0],cur.t[1],cur.t[2]);
+    if(Math.abs(cam.fov-cur.fov)>.01){ cam.fov=cur.fov; cam.updateProjectionMatrix(); }
+
+    /* sun travels an arc; angle 0 = dawn, 1 = dusk, >1 = below horizon */
+    var a=s.sunA, el=Math.sin(Math.PI*clamp(a,0,1)), below=a>1;
+    var sx=Math.cos(Math.PI*(1-a))*62, sy=el*46-(below?14:0), sz=-28+Math.sin(a*2.2)*8;
+    sun.position.set(sx,Math.max(sy,-12),sz);
+    sun.intensity=Math.max(0,el)*2.5;
+    sun.color.setHSL(.09+el*.045,.85-el*.33,.55+el*.2);
+    sunGlow.position.set(sx*.75,Math.max(sy,-10)*.8,sz*.75);
+    sunGlow.material.opacity=clamp(el*1.1,0,1);
+    sunGlow.scale.setScalar(14+(1-el)*14);
+    hemi.intensity=s.hemi;
+    topC.lerp(s.top,.12); botC.lerp(s.bot,.12);
+    skyMat.uniforms.uTop.value.copy(topC); skyMat.uniforms.uBot.value.copy(botC);
+    scene.fog.color.copy(botC).lerp(topC,.55);
+
+    /* hardware reacts to the light */
+    var night=clamp(1-el*2.4,0,1);
+    for(var i=0;i<windows.length;i++){
+      windows[i].material.emissive.setHex(0xffc266);
+      windows[i].material.emissiveIntensity=night*(.5+.3*Math.sin(t*1.3+i));
+    }
+    inverterLed.material.color.setHex(el>.08?0x4dff9b:0x2b3350);
+    meterNeedle.rotation.x = (el>.12? -1:1) * (t*(el>.12? 2.2*el : .7)) ;
+    renderer.render(scene,cam);
+  }
+  resize(); addEventListener("resize",resize);
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(en){ running=en[0].isIntersecting; },{threshold:0}).observe($("journey").parentNode===document.body?$("journey"):$("journey"));
+  }
+  document.addEventListener("visibilitychange",function(){ running=!document.hidden; });
+  requestAnimationFrame(render);
+  /* keep the fixed canvas out of the way once the solid sections begin */
+  var solid=document.querySelector(".solid");
+  addEventListener("scroll",function(){
+    var past = solid.getBoundingClientRect().top <= 1;
+    host.style.visibility = past? "hidden":"visible";
+    running = !past;
+  },{passive:true});
+})();
+
+
+/* ============================================================
+   PER-SECTION 3D — one renderer, drawn into each .view box
+   ============================================================ */
+(function(){
+  if(!window.THREE) return;
+  var views=[].slice.call(document.querySelectorAll(".view[data-view]"));
+  if(!views.length) return;
+  var cv=document.createElement("canvas"); cv.id="views"; cv.setAttribute("aria-hidden","true");
+  var R;
+  try{ R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true}); }catch(e){ return; }
+  document.body.appendChild(cv);
+  R.setPixelRatio(Math.min(devicePixelRatio||1, SMALL?1.5:2));
+  R.toneMapping=THREE.ACESFilmicToneMapping; R.toneMappingExposure=1.1;
+  R.setClearColor(0x000000,0); R.autoClear=false;
+  function size(){ R.setSize(innerWidth,innerHeight,false); }
+  size(); addEventListener("resize",size);
+
+  function cellTex(){
+    var c=document.createElement("canvas"); c.width=256; c.height=384; var g=c.getContext("2d");
+    g.fillStyle="#12265f"; g.fillRect(0,0,256,384);
+    for(var r=0;r<6;r++) for(var k=0;k<4;k++){
+      var x=k*64+4,y=r*64+4, lg=g.createLinearGradient(x,y,x+56,y+56);
+      lg.addColorStop(0,"#3466c4"); lg.addColorStop(1,"#15307a"); g.fillStyle=lg; g.fillRect(x,y,56,56);
+      g.strokeStyle="rgba(200,222,255,.5)"; g.lineWidth=1.4; g.beginPath();
+      g.moveTo(x+18,y); g.lineTo(x+18,y+56); g.moveTo(x+38,y); g.lineTo(x+38,y+56); g.stroke();
+    }
+    var t=new THREE.CanvasTexture(c); t.anisotropy=4; return t;
+  }
+  var M={
+    panel:new THREE.MeshStandardMaterial({map:cellTex(),roughness:.22,metalness:.5}),
+    frame:new THREE.MeshStandardMaterial({color:0xc3ccdc,roughness:.4,metalness:.8}),
+    wall:new THREE.MeshStandardMaterial({color:0xb4bccb,roughness:.9}),
+    dark:new THREE.MeshStandardMaterial({color:0x27314f,roughness:.85}),
+    ground:new THREE.MeshStandardMaterial({color:0x1a2346,roughness:1}),
+    gold:new THREE.MeshStandardMaterial({color:0xffb020,roughness:.25,metalness:.95,emissive:0x4a2a00,emissiveIntensity:.4}),
+    win:new THREE.MeshStandardMaterial({color:0x0e1530,emissive:0xffc266,emissiveIntensity:.35,roughness:.25}),
+    white:new THREE.MeshStandardMaterial({color:0xeef0f4,roughness:.6}),
+    cloud:new THREE.MeshStandardMaterial({color:0xd7dce8,roughness:1}),
+    sun:new THREE.MeshBasicMaterial({color:0xffc24a})
+  };
+  function box(w,h,d,mat,x,y,z){ var m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat); m.position.set(x||0,y||0,z||0); return m; }
+  function module(w,d){
+    var g=new THREE.Group();
+    g.add(box(w,.05,d,M.panel,0,.01,0));
+    g.add(box(w+.06,.06,d+.06,M.frame,0,-.03,0));
+    return g;
+  }
+  function disc(r){ var m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,.06,48),M.ground); m.position.y=-.03; return m; }
+  function base(pos,look,fov){
+    var s=new THREE.Scene(), c=new THREE.PerspectiveCamera(fov||32,1,.1,200);
+    s.add(new THREE.HemisphereLight(0xc4d6ff,0x1a1630,.8));
+    var d=new THREE.DirectionalLight(0xfff0d6,1.7); d.position.set(5,9,6); s.add(d);
+    var r=new THREE.DirectionalLight(0x5aa7ff,.55); r.position.set(-6,3,-4); s.add(r);
+    var v={scene:s,cam:c,look:new THREE.Vector3(look[0],look[1],look[2]),pos:new THREE.Vector3(pos[0],pos[1],pos[2])};
+    c.position.copy(v.pos); c.lookAt(v.look); return v;
+  }
+  function sway(v,t,amp,spd){
+    var dx=v.pos.x-v.look.x, dz=v.pos.z-v.look.z, r=Math.hypot(dx,dz), a=Math.atan2(dz,dx)+Math.sin(t*(spd||.25))*(amp||.3);
+    v.cam.position.set(v.look.x+Math.cos(a)*r, v.pos.y, v.look.z+Math.sin(a)*r); v.cam.lookAt(v.look);
+  }
+  function house(g,w,h,d,nPanels){
+    g.add(box(w,h,d,M.wall,0,h/2,0));
+    g.add(box(w+.2,.14,d+.2,M.dark,0,h+.07,0));
+    g.add(box(w*.2,h*.55,.05,M.dark,w*.2,h*.275,d/2+.03));
+    g.add(box(w*.22,h*.22,.05,M.win,-w*.24,h*.62,d/2+.03));
+    g.add(box(w*.22,h*.22,.05,M.win,w*.18,h*.72,d/2+.03));
+    for(var i=0;i<nPanels;i++){ var m=module(w*.38,d*.3); m.position.set((i%2-.5)*w*.44, h+.42, (Math.floor(i/2)-.5)*d*.36); m.rotation.x=-.32; g.add(m); g.add(box(.05,.34,.05,M.frame,m.position.x,h+.25,m.position.z+d*.1)); }
+  }
+
+  var B={};
+  B.roof=function(){
+    var v=base([6.2,6.4,7.4],[0,0,.3],31), g=new THREE.Group(); v.scene.add(g);
+    g.add(box(9.2,.4,6.4,M.wall,0,-.2,0));
+    [[0,3.25,9.4,.2],[0,-3.25,9.4,.2],[4.65,0,.2,6.6],[-4.65,0,.2,6.6]].forEach(function(e){ g.add(box(e[2],.55,e[3],M.dark,e[0],.27,e[1])); });
+    var tank=new THREE.Mesh(new THREE.CylinderGeometry(.42,.42,.9,16),M.dark); tank.position.set(3.9,.45,2.55); g.add(tank);
+    g.add(box(1,.9,1,M.dark,-3.9,.45,2.5));
+    var slots=[]; for(var r=0;r<4;r++) for(var c=0;c<6;c++) slots.push([(c-2.5)*1.36,(r-1.5)*1.38]);
+    slots.sort(function(a,b){ return (Math.abs(a[0])*.8+Math.abs(a[1]-.7))-(Math.abs(b[0])*.8+Math.abs(b[1]-.7)); });
+    v.mods=[]; v.n=window.__roofN||6;
+    v.update=function(t,dt){
+      sway(v,t,.22,.18);
+      for(var i=0;i<24;i++){
+        var want=i<v.n, m=v.mods[i];
+        if(want && !m){ m=module(1.22,1.12); m.position.set(slots[i][0],3.2+i*.05,slots[i][1]); m.rotation.x=-.24; m.userData.y=3.2; g.add(m); v.mods[i]=m; }
+        if(!want && m){ g.remove(m); v.mods[i]=null; continue; }
+        if(m){ var ty=.38; m.userData.vy=(m.userData.vy||0)+(ty-m.position.y)*.18; m.userData.vy*=.68; m.position.y+=m.userData.vy; }
+      }
+    };
+    window.__setRoof=function(n){ v.n=n; };
+    return v;
+  };
+  B.home=function(){
+    var v=base([5.2,3.6,6.2],[0,1.15,0],30), g=new THREE.Group(); v.scene.add(g);
+    g.add(disc(2.9)); house(g,3,1.9,2.4,4);
+    var tree=new THREE.Mesh(new THREE.SphereGeometry(.45,12,10),new THREE.MeshStandardMaterial({color:0x2c6b4f,roughness:1})); tree.position.set(-1.9,.9,.9); g.add(tree);
+    g.add(box(.08,.5,.08,M.dark,-1.9,.25,.9));
+    v.update=function(t){ g.rotation.y=t*.32; };
+    return v;
+  };
+  B.society=function(){
+    var v=base([6.2,4.6,7.4],[0,1.9,0],32), g=new THREE.Group(); v.scene.add(g);
+    g.add(disc(3.1));
+    g.add(box(1.9,4.2,1.9,M.wall,-.45,2.1,0)); g.add(box(1.3,2.7,1.5,M.wall,1.35,1.35,.2));
+    for(var y=0;y<6;y++) for(var x=0;x<3;x++){ g.add(box(.3,.32,.04,M.win,-.45+(x-1)*.55,.5+y*.62,.97)); }
+    for(var y2=0;y2<4;y2++) for(var x2=0;x2<2;x2++){ g.add(box(.3,.3,.04,M.win,1.35+(x2-.5)*.55,.45+y2*.58,.97)); }
+    for(var i=0;i<4;i++){ var m=module(.78,.5); m.position.set(-.45+(i%2-.5)*.84,4.42,(Math.floor(i/2)-.5)*.72); m.rotation.x=-.3; g.add(m); }
+    for(var j=0;j<2;j++){ var m2=module(.55,.5); m2.position.set(1.35+(j-.5)*.6,2.95,.2); m2.rotation.x=-.3; g.add(m2); }
+    v.update=function(t){ g.rotation.y=t*.26+.6; };
+    return v;
+  };
+  B.business=function(){
+    var v=base([5.8,3.8,6.6],[0,.9,0],31), g=new THREE.Group(); v.scene.add(g);
+    g.add(disc(3.2));
+    g.add(box(4.2,1.3,2.6,M.wall,0,.65,0)); g.add(box(4.4,.1,2.8,M.dark,0,1.35,0));
+    g.add(box(1.1,.8,.05,M.dark,-1.2,.4,1.31));
+    for(var r=0;r<3;r++) for(var c=0;c<4;c++){ var m=module(.92,.62); m.position.set((c-1.5)*1.02,1.62,(r-1)*.82); m.rotation.x=-.34; g.add(m); }
+    var stack=new THREE.Mesh(new THREE.CylinderGeometry(.16,.2,1.5,12),M.dark); stack.position.set(1.85,2.05,-1.05); g.add(stack);
+    v.update=function(t){ g.rotation.y=t*.3+1.2; };
+    return v;
+  };
+  B.coins=function(el){
+    var n=+el.getAttribute("data-n")||4, v=base([3.6,2.6,4.4],[0,.9,0],30), g=new THREE.Group(); v.scene.add(g);
+    var sh=new THREE.Mesh(new THREE.CircleGeometry(1.1,40),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.35})); sh.rotation.x=-Math.PI/2; g.add(sh);
+    var geo=new THREE.CylinderGeometry(.8,.8,.16,48), coins=[];
+    for(var i=0;i<n;i++){ var c=new THREE.Mesh(geo,M.gold); c.userData.y=.09+i*.17; c.userData.x=(Math.sin(i*2.3)*.06); c.position.set(c.userData.x,6,0); c.rotation.y=i*.7; g.add(c); coins.push(c); }
+    v.update=function(t,dt,first){
+      var age=RM?99:t-first;
+      for(var i=0;i<coins.length;i++){ var k=Math.min(1,Math.max(0,(age-i*.11)/.45)); k=1-Math.pow(1-k,3); coins[i].position.y=coins[i].userData.y+(1-k)*4; }
+      g.rotation.y=t*.4;
+    };
+    return v;
+  };
+  B.module=function(el){
+    var v=base([0,3.6,7.2],[0,.2,0],30), g=new THREE.Group(); v.scene.add(g); g.rotation.x=-.18;
+    var W=3.6,D=2.2;
+    function layer(mat,h){ return new THREE.Mesh(new THREE.BoxGeometry(W,h,D),mat); }
+    var glass=layer(new THREE.MeshStandardMaterial({color:0xd8e8ff,roughness:.05,metalness:.1,transparent:true,opacity:.32}),.05);
+    var eva1=layer(new THREE.MeshStandardMaterial({color:0xffffff,roughness:.6,transparent:true,opacity:.35}),.03);
+    var cells=layer(M.panel,.04);
+    var eva2=layer(new THREE.MeshStandardMaterial({color:0xffffff,roughness:.6,transparent:true,opacity:.35}),.03);
+    var back=layer(M.white,.04);
+    var jb=box(.7,.22,.5,M.dark,0,0,-.4);
+    var fr=new THREE.Group();
+    fr.add(box(W+.16,.18,.08,M.frame,0,0,D/2+.04)); fr.add(box(W+.16,.18,.08,M.frame,0,0,-D/2-.04));
+    fr.add(box(.08,.18,D,M.frame,W/2+.04,0,0)); fr.add(box(.08,.18,D,M.frame,-W/2-.04,0,0));
+    var L=[[glass,2],[eva1,1],[cells,0],[eva2,-1],[back,-2],[jb,-3]];
+    L.forEach(function(l){ g.add(l[0]); }); g.add(fr);
+    v.update=function(t,dt,first,r){
+      var p=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));
+      var e=RM?.8:Math.sin(p*Math.PI); e=Math.max(0,Math.min(1,e*1.25));
+      var gap=e*.62;
+      L.forEach(function(l){ l[0].position.y=l[1]*(.035+gap); });
+      fr.position.y=0; fr.scale.y=1;
+      g.rotation.y=Math.sin(t*.3)*.45-.25;
+    };
+    return v;
+  };
+  B.clean=function(){
+    var v=base([0,3.4,4.6],[0,0,0],34), g=new THREE.Group(); v.scene.add(g); g.rotation.x=-.32; g.rotation.y=-.18;
+    g.add(module(3.8,2.3));
+    var strips=[], N=10, sw=3.8/N;
+    for(var i=0;i<N;i++){ var m=new THREE.Mesh(new THREE.BoxGeometry(sw*1.02,.012,2.28),new THREE.MeshStandardMaterial({color:0x8d8068,roughness:1,transparent:true,opacity:.6})); m.position.set(-1.9+sw*(i+.5),.045,0); g.add(m); strips.push(m); }
+    var brush=new THREE.Group(); brush.add(box(.16,.14,2.5,M.dark,0,.12,0)); brush.add(box(.08,.08,2.6,M.gold,0,.22,0));
+    var bristles=box(.12,.05,2.45,new THREE.MeshStandardMaterial({color:0x6c83b8,roughness:.9}),0,.05,0); brush.add(bristles);
+    g.add(brush);
+    v.update=function(t){
+      var ph=RM?.5:(t*.22)%1, bx=-2.1+Math.min(ph/.82,1)*4.2;
+      brush.position.x=bx; brush.position.y=ph<.82?0:(ph-.82)*3; brush.visible=ph<.95;
+      for(var i=0;i<N;i++){
+        var sx=strips[i].position.x, target = ph<.82 ? (bx>sx?.03:.6) : .6*((ph-.82)/.18);
+        strips[i].material.opacity+= (target-strips[i].material.opacity)*.2;
+      }
+    };
+    return v;
+  };
+  B.monsoon=function(){
+    var v=base([0,2.1,7],[0,1.3,0],34), g=new THREE.Group(); v.scene.add(g);
+    g.add(disc(3.4));
+    var pm=new THREE.MeshStandardMaterial({map:M.panel.map,roughness:.22,metalness:.5,emissive:0xffb020,emissiveIntensity:0});
+    var panel=new THREE.Group(); panel.add(box(2.6,.05,1.5,pm,0,0,0)); panel.add(box(2.66,.06,1.56,M.frame,0,-.04,0));
+    panel.position.set(-.3,.9,.4); panel.rotation.x=-.55; g.add(panel);
+    g.add(box(.08,.9,.08,M.frame,-1.3,.45,.7)); g.add(box(.08,.9,.08,M.frame,.7,.45,.7));
+    var sun=new THREE.Mesh(new THREE.SphereGeometry(.42,24,18),M.sun); sun.position.set(1.4,2.75,-1.6); g.add(sun);
+    var halo=new THREE.Mesh(new THREE.SphereGeometry(.62,24,18),new THREE.MeshBasicMaterial({color:0xffb020,transparent:true,opacity:.18})); sun.add(halo);
+    var cloud=new THREE.Group(); [[0,0,0,.55],[.55,.1,0,.45],[-.55,.05,0,.42],[.25,.32,0,.42],[-.25,.3,.1,.38]].forEach(function(c){ var m=new THREE.Mesh(new THREE.SphereGeometry(c[3],16,12),M.cloud); m.position.set(c[0],c[1],c[2]); cloud.add(m); });
+    cloud.position.set(0,2.75,-1.2); g.add(cloud);
+    var drops=60, pos=new Float32Array(drops*6), seeds=[];
+    for(var i=0;i<drops;i++) seeds.push([Math.random()*1.6-.8,Math.random(),Math.random()*.6-.3]);
+    var rg=new THREE.BufferGeometry(); rg.setAttribute("position",new THREE.BufferAttribute(pos,3));
+    var rain=new THREE.LineSegments(rg,new THREE.LineBasicMaterial({color:0x9cc6ff,transparent:true,opacity:.7})); g.add(rain);
+    v.update=function(t){
+      var cx=RM?-1.8:Math.sin(t*.35)*2.3; cloud.position.x=cx;
+      var cover=Math.max(0,1-Math.abs(cx-sun.position.x)/1.1);
+      pm.emissiveIntensity=.35*(1-cover);
+      sun.material.color.setHex(cover>.5?0xb98c3a:0xffc24a); halo.material.opacity=.18*(1-cover);
+      var raining=Math.abs(cx)<1.9;
+      rain.visible=raining;
+      for(var i=0;i<drops;i++){
+        var f=(seeds[i][1]+t*1.4)%1, x=cx+seeds[i][0], y=2.45-f*2.3, z=-1.2+seeds[i][2]+f*1.1;
+        pos.set([x,y,z,x-.02,y-.18,z+.08],i*6);
+      }
+      rg.attributes.position.needsUpdate=true;
+    };
+    return v;
+  };
+  B.visit=function(){
+    var v=base([5,3.9,6.2],[0,1.3,0],32), g=new THREE.Group(); v.scene.add(g);
+    g.add(disc(3)); house(g,2.6,1.6,2.1,4);
+    var pin=new THREE.Group(); var head=new THREE.Mesh(new THREE.SphereGeometry(.34,24,18),M.gold); head.position.y=.62; pin.add(head);
+    var tip=new THREE.Mesh(new THREE.ConeGeometry(.3,.75,24),M.gold); tip.rotation.x=Math.PI; tip.position.y=.18; pin.add(tip);
+    var dot=new THREE.Mesh(new THREE.SphereGeometry(.13,16,12),M.white); dot.position.set(0,.66,.27); pin.add(dot);
+    pin.position.y=2.75; g.add(pin);
+    var rings=[0,1].map(function(i){ var m=new THREE.Mesh(new THREE.RingGeometry(.9,1,56),new THREE.MeshBasicMaterial({color:0xffb020,transparent:true,side:THREE.DoubleSide})); m.rotation.x=-Math.PI/2; m.position.y=.02; m.userData.o=i*.5; g.add(m); return m; });
+    v.update=function(t){
+      pin.position.y=2.75+Math.sin(t*2)*.15; pin.rotation.y=t*1.2;
+      rings.forEach(function(m){ var k=RM?.3:(t*.45+m.userData.o)%1; m.scale.setScalar(1+k*1.6); m.material.opacity=.7*(1-k); });
+      g.rotation.y=Math.sin(t*.25)*.35-.25;
+    };
+    return v;
+  };
+
+  var list=[];
+  views.forEach(function(el){
+    var b=B[el.getAttribute("data-view")]; if(!b) return;
+    try{ var v=b(el); v.el=el; v.first=0; list.push(v); }catch(e){}
+  });
+  var roofEl=document.querySelector(".v-roof"); if(roofEl){ roofEl.textContent=""; }
+  document.documentElement.classList.add("has3d");
+  var T0=performance.now();
+  function frame(now){
+    requestAnimationFrame(frame);
+    var t=RM?3:(now-T0)/1000, H=innerHeight;
+    R.setScissorTest(false); R.clear(); R.setScissorTest(true);
+    for(var i=0;i<list.length;i++){
+      var v=list[i], r=v.el.getBoundingClientRect();
+      if(r.bottom<0||r.top>H||r.width<4||r.height<4) continue;
+      if(!v.first) v.first=t;
+      v.cam.aspect=r.width/r.height; v.cam.updateProjectionMatrix();
+      if(v.update) v.update(t,0,v.first,r);
+      var y=H-r.bottom;
+      R.setViewport(r.left,y,r.width,r.height); R.setScissor(r.left,y,r.width,r.height);
+      R.render(v.scene,v.cam);
+    }
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* ============================================================
+   Page behaviour
+   ============================================================ */
+var nav=$("nav");
+var beats=[].slice.call(document.querySelectorAll(".beat"));
+addEventListener("scroll",function(){
+  nav.classList.toggle("stuck", scrollY > innerHeight*.6);
+},{passive:true});
+if("IntersectionObserver" in window){
+  var bo=new IntersectionObserver(function(en){ en.forEach(function(e){ e.target.classList.toggle("live", e.isIntersecting); }); },{threshold:.35});
+  beats.forEach(function(b){bo.observe(b)});
+} else beats.forEach(function(b){b.classList.add("live")});
+
+/* EL scan comparison */
+(function(){
+  var day="",el="",seed=5,rnd=function(){seed=(seed*48271)%2147483647;return seed/2147483647};
+  day+='<rect width="100" height="130" fill="#0A1030"/>'; el+='<rect width="100" height="130" fill="#04050C"/>';
+  for(var r=0;r<10;r++) for(var c=0;c<6;c++){
+    var x=3+c*15.8,y=3+r*12.5,v=(152+rnd()*88)|0,bad=(r===6&&c===1);
+    day+='<rect x="'+x+'" y="'+y+'" width="14.6" height="11.3" rx="1" fill="#17307a"/><path d="M'+(x+4.9)+' '+y+'v11.3M'+(x+9.7)+' '+y+'v11.3" stroke="#7fa6e8" stroke-width=".35"/>';
+    el+='<rect x="'+x+'" y="'+y+'" width="14.6" height="11.3" rx="1" fill="rgb('+(bad?34:v)+','+(bad?34:v)+','+(bad?40:v+6)+')"/><path d="M'+(x+4.9)+' '+y+'v11.3M'+(x+9.7)+' '+y+'v11.3" stroke="#04050C" stroke-width=".5"/>';
+  }
+  day+='<path d="M0 0L104 0L44 130L0 130Z" fill="#fff" opacity=".06"/>';
+  el+='<path d="M21 70l6 5-2 4 7 6 3 8 6 3" fill="none" stroke="#04050C" stroke-width="1.3" stroke-linejoin="round"/><circle cx="32" cy="82" r="13" fill="none" stroke="#FFB020" stroke-width="1" stroke-dasharray="3 2"/>';
+  $("scanDay").innerHTML=day; $("scanEl").innerHTML=el;
+  var box=$("scan"), x=46, touched=false;
+  function set(v){ x=clamp(v,4,96); box.style.setProperty("--x",x+"%"); box.setAttribute("aria-valuenow",Math.round(x)); }
+  function from(e){ var r=box.getBoundingClientRect(); touched=true; set((e.clientX-r.left)/r.width*100); }
+  box.addEventListener("pointerdown",function(e){ box.setPointerCapture(e.pointerId); from(e); });
+  box.addEventListener("pointermove",function(e){ if(box.hasPointerCapture(e.pointerId)) from(e); });
+  box.addEventListener("keydown",function(e){ if(e.key==="ArrowLeft"){touched=true;set(x-5);e.preventDefault();} if(e.key==="ArrowRight"){touched=true;set(x+5);e.preventDefault();} });
+  set(46);
+  if(!RM) (function sweep(n){ if(!touched){ set(50+32*Math.sin(n/1900)); requestAnimationFrame(sweep); } })(0);
+})();
+
+/* survey form */
+(function(){
+  var form=$("form"), sets=form.querySelectorAll("fieldset"), bars=$("form").querySelectorAll(".prog i"), cur=0;
+  var titles=["Your property","Your roof","Location","Contact"];
+  function show(n){
+    cur=n;
+    sets.forEach(function(f,i){f.classList.toggle("cur",i===n)});
+    bars.forEach(function(b,i){b.classList.toggle("on",i<=n)});
+    $("stepno").textContent="Step "+(n+1)+" of 4 · "+titles[n];
+    $("back").hidden=n===0; $("next").textContent=n===3?"Book my free survey":"Next"; $("oops").textContent="";
+  }
+  function problem(n){
+    if(n===0 && !(+$("f-bill").value>=500)) return "Enter your monthly bill, for example 4500.";
+    if(n===2 && !/^\d{6}$/.test($("f-pin").value.trim())) return "Enter a 6-digit pincode.";
+    if(n===3 && $("f-name").value.trim().length<2) return "Enter your name.";
+    if(n===3 && !/^[6-9]\d{9}$/.test($("f-mob").value.trim())) return "Enter a 10-digit mobile number.";
+    return "";
+  }
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var m=problem(cur); if(m){ $("oops").textContent=m; return; }
+    if(cur<3){ show(cur+1); var f=sets[cur].querySelector("input,select"); if(f) f.focus({preventScroll:true}); return; }
+    var rows=[["Property",$("f-type").selectedOptions[0].text],["Monthly bill",inr(+$("f-bill").value)],["Owner",$("f-own").value],["Roof",$("f-roof").value],["Pincode",$("f-pin").value],["Other quote",$("f-quote").value],["Name",$("f-name").value],["Mobile",$("f-mob").value]];
+    var dl=$("sum"); dl.textContent="";
+    rows.forEach(function(r){var dt=document.createElement("dt"),dd=document.createElement("dd");dt.textContent=r[0];dd.textContent=r[1];dl.appendChild(dt);dl.appendChild(dd);});
+    form.hidden=true; $("sent").classList.add("show"); $("sent").focus({preventScroll:true});
+  });
+  $("back").addEventListener("click",function(){show(cur-1)});
+  $("again").addEventListener("click",function(){form.hidden=false;$("sent").classList.remove("show");show(0);});
+  show(0);
+})();
+})();
+</script>
+</body>
+</html>
